@@ -18,6 +18,7 @@ class Event extends Component{
             location:'',
             details:'',
             people: null,
+            people_coming: 0,
             post_id: null,
             date: new Date()
         }
@@ -37,8 +38,8 @@ class Event extends Component{
 
 
     createPost(){
-        const{sport, location, details, people, post_id} = this.state
-        const body = {sport, location, details, people, post_id}
+        const{sport, location, details, people, people_coming, post_id} = this.state
+        const body = {sport, location, details, people, people_coming, post_id}
         axios.post('/event/posts', body).then((res)=>{
             this.props.history.push('dashboard')
             this.setState({
@@ -46,6 +47,7 @@ class Event extends Component{
             location:'',
             details:'',
             people: '',
+            people_coming: 0,
             post_id: null,
             date: new Date()
             })

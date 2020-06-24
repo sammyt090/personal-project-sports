@@ -10,7 +10,8 @@ class Dashboard extends Component{
         super()
 
         this.state={
-            posts: []
+            posts: [],
+            
         }
         // this.componentDidMount = this.componentDidMount.bind(this)
         this.getPosts = this.getPosts.bind(this)
@@ -23,7 +24,7 @@ class Dashboard extends Component{
 
     getPosts(){
         axios.get('/dashboard/posts').then((res) => {
-            console.log(res)
+            // console.log(res)
             this.setState({
                 posts: res.data
             })

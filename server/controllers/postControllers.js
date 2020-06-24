@@ -12,9 +12,9 @@ module.exports ={
 
 
     createPost: async (req, res) => {
-        const { sport, location, details, people, post_id} = req.body
+        const { sport, location, details, people, people_coming, post_id} = req.body
         const db = req.app.get('db')
-        db.create_post([sport, location, details, people, post_id]).then(() => res.sendStatus(200))
+        db.create_post([sport, location, details, people, people_coming, post_id]).then(() => res.sendStatus(200))
         .catch(err => {
             res.status(500).send(err)
         })
@@ -40,5 +40,19 @@ module.exports ={
         .then(()=>res.sendStatus(200))
         .catch(err=>
             res.status(500).send(err))
+    },
+
+    editPost: async(req, res) => {
+        const { sport, location, details, people} = req.body
+        const {id} = req.params
+        const db = req.app.get('db')
+        // console.log([sport, location, details, people]);
+        
+        const [updatedPost] = await db.edit_post([id, sport, location, details, people])
+
+        if ( updatedPost ){
+            return res.sendStatus(200)
+        }
+        res.status(500).send('Error encountered')
     }
 }

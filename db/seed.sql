@@ -13,17 +13,18 @@ create table users (
 );
 
 create table favorites (
-    id serial primary key,
+    id_favorites serial primary key,
     sport varChar(20),
     favorites_id integer references users(id)
 );
 
 create table posts (
-    id serial primary key,
+    id_posts serial primary key,
     sport varChar(30),
     location varChar(100),
     details varChar(500),
     people integer,
+    people_coming integer,
     posts_id integer references users(id)
 
 );

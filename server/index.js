@@ -27,7 +27,7 @@ app.get('/dashboard/posts', ctr2.getPosts)
 app.post('/event/posts', ctr2.createPost)
 app.get('/dashboard/post/:id', ctr2.getPost)
 app.delete('/dashboard/post/:id', ctr2.deletePost)
-
+app.put('/dashboard/post/:id', ctr2.editPost)
 
 
 
