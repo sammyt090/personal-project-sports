@@ -3,6 +3,7 @@ import './Auth.css'
 import axios from 'axios'
 import {getUser} from '../../redux/reducer'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 
 class Auth extends Component{
@@ -49,7 +50,7 @@ class Auth extends Component{
         return(
             <div className = 'auth-main'>
                 <div className = 'auth-box1'>
-                    <h1>Sign Up:</h1>
+                    <h1>Sign In:</h1>
                 <div>
                     <p>Username:</p>
                 <input className= 'auth-box' value={this.state.username} name="username" placeholder="" onChange = {(event)=> this.handleChange(event)}/>
@@ -60,7 +61,12 @@ class Auth extends Component{
                 </div>
 
                 <button onClick = {this.loginUser}>Login</button>
+                <div>
+                <p>Don't have an account?...</p>
+                <Link to = '/register'>Register here!</Link>
                 </div>
+                </div>
+                
             </div>
         )
     }

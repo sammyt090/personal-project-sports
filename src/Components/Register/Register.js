@@ -3,6 +3,7 @@ import axios from 'axios'
 import './Register.css'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/reducer'
+import {Link} from 'react-router-dom'
 
 class Register extends Component{
     constructor(){
@@ -14,7 +15,7 @@ class Register extends Component{
             last_name: '',
             username:'',
             password:'',
-            profile_picture:'hello'
+            profile_pic: 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg'
         }
         this.handleChange = this.handleChange.bind(this)
         this.registerUser = this.registerUser.bind(this)
@@ -28,9 +29,9 @@ class Register extends Component{
 
 
     registerUser(){
-        const {first_name, last_name, username, password, profile_picture} = this.state
+        const {first_name, last_name, username, password, profile_pic} = this.state
         
-        axios.post('/auth/register', {first_name, last_name, username, password, profile_picture})
+        axios.post('/auth/register', {first_name, last_name, username, password, profile_pic})
         .then((res) => {
             this.props.history.push("/dashboard")
             this.setState({
@@ -75,7 +76,9 @@ class Register extends Component{
                 </div>
 
                 <button onClick={this.registerUser}>Register</button>
+                <Link to = '/'><p>Cancel</p></Link>
                 </div>
+
             </div>
         )
     }

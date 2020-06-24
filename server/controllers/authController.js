@@ -13,11 +13,13 @@ module.exports = {
 
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
+        
         const registeredUser = await db.register_user([username, hash, first_name, last_name, profile_pic])
-
+        delete registeredUser[0].password
         req.session.user = {username: registeredUser[0].username, id: registeredUser[0].id, first_name: registeredUser[0].first_name,
-        last_name: registeredUser[0].last_name, profile_pic: registeredUser[0].profile_pic}
+        last_name: registeredUser[0].last_name, profile_pic: 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg'}
         res.status(200).send(req.session.user)
+        
 
     },
 
@@ -29,6 +31,7 @@ module.exports = {
             return res.status(404).send('User does not exist')
         }else {
             const authenticate = bcrypt.compareSync(password, result[0].password)
+            delete result[0].password
             if (authenticate) {
                 req.session.user = {
                     id: result[0].id,

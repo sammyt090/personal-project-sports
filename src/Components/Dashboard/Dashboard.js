@@ -32,12 +32,13 @@ class Dashboard extends Component{
 
 
 render(){
-    let mapPosts = this.state.posts.map(e => <div><Post e= {e} posts ={this.state.posts}/></div>)
+    let mapPosts = this.state.posts.map(e =>  <div  key={e.id_posts}> <Post e= {e} posts ={this.state.posts}/></div>)
 
     return(
         <div className = 'dashboard'>
         <p> Dashboard:</p>
-        {mapPosts}
+
+       {mapPosts}
         </div>
     )
 }

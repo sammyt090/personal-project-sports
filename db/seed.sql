@@ -23,7 +23,7 @@ create table posts (
     sport varChar(30),
     location varChar(100),
     details varChar(500),
-    maxLimit integer,
+    people integer,
     posts_id integer references users(id)
 
 );
