@@ -18,8 +18,8 @@ class Event extends Component{
             location:'',
             details:'',
             people: null,
-            people_coming: 0,
-            post_id: null,
+            posts_id: null,
+            user_activity_id:null,
             date: new Date()
         }
 
@@ -27,8 +27,13 @@ class Event extends Component{
     }
 
     componentDidMount (){
+        console.log(this.props);
+        console.log(this.state);
+        
+        
         this.setState({
-            post_id: this.props.id
+            posts_id: this.props.id,
+            user_activity_id: this.props.id
         })
     }
 
@@ -38,8 +43,8 @@ class Event extends Component{
 
 
     createPost(){
-        const{sport, location, details, people, people_coming, post_id} = this.state
-        const body = {sport, location, details, people, people_coming, post_id}
+        const{sport, location, details, people, going, posts_id} = this.state
+        const body = {sport, location, details, people, posts_id, going}
         axios.post('/event/posts', body).then((res)=>{
             this.props.history.push('dashboard')
             this.setState({
@@ -47,8 +52,7 @@ class Event extends Component{
             location:'',
             details:'',
             people: '',
-            people_coming: 0,
-            post_id: null,
+            posts_id: null,
             date: new Date()
             })
         })

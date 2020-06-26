@@ -28,6 +28,8 @@ app.post('/event/posts', ctr2.createPost)
 app.get('/dashboard/post/:id', ctr2.getPost)
 app.delete('/dashboard/post/:id', ctr2.deletePost)
 app.put('/dashboard/post/:id', ctr2.editPost)
+app.put('/dashboard/people/:postId', ctr2.addPeople)
+app.put('/dashboard/remove/:id', ctr2.deletePeople)
 
 
 

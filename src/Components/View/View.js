@@ -8,12 +8,14 @@ class View extends Component {
 
     this.state = {
       isToggled: false,
-    };
 
+    };
 
     this.deletePost = this.deletePost.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.editPost = this.editPost.bind(this);
+    this.goingFn = this.goingFn.bind(this);
+    this.addPeople = this.addPeople.bind(this);
   }
 
   componentDidMount() {
@@ -25,29 +27,73 @@ class View extends Component {
           sport,
           profile_pic,
           people,
-          people_coming,
+          // going,
           details,
           location,
-          id,
           id_posts,
+          attendees
         } = res.data[0];
+        console.log(this.props.id);
+        
+        let going = attendees.map(e => e.user_activity_id ===(this.props.id))
+        console.log(going)
         this.setState({
           profile_pic: profile_pic,
           first_name: first_name,
           sport: sport,
           people: people,
-          people_coming: people_coming,
+          going: going,
           details: details,
           location: location,
-          id: id,
           id_posts: id_posts,
           isToggled: false,
+          attendees: attendees
         });
       });
     }
+    console.log(this.state.going)
+    // console.log(attendees)
   }
 
+  addPeople(postId, going) {
+    // console.log(this.state)
+    const { id_posts } = this.state;
+    const {id} =this.props
+    // console.log(postId);
+    // console.log(id_posts);
+    // console.log(id);
+    // console.log(going);
+    axios
+      .put(`/dashboard/people/${postId}`, { id_posts, id, going })
+      .then(() => {
+        // this.props.history.push("/dashboard");
+        console.log('Finished!');
+        console.log(going);
+        
+        this.componentDidMount()
+      });
+  }
+
+  // componentDidUpdate(previousProp, previousState) {
+  //   if (previousState.going !== this.state.going) {
+  //     this.addPeople(this.state.id_posts);
+  //   }
+  // }
+
   toggleFn = () => this.setState({ isToggled: !this.state.isToggled });
+
+  notGoingFn= async ()=> {
+  const {going, id_posts } = this.state;
+  this.setState({ going: !going });
+  this.deletePeople(id_posts, !going)}
+
+  goingFn = async () => {
+    const {going, id_posts } = this.state;
+    this.setState({ going: !going });
+    this.addPeople(id_posts, !going)
+    
+    
+  };
 
   deletePost(id_posts) {
     axios.delete(`/dashboard/post/${id_posts}`).then((res) => {
@@ -62,7 +108,7 @@ class View extends Component {
     const { sport, location, details, people } = this.state;
     const body = { sport, location, details, people };
     // console.log(id_posts);
-    
+
     axios.put(`/dashboard/post/${id_posts}`, body).then(() => {
       this.props.history.push("/dashboard");
     });
@@ -70,7 +116,16 @@ class View extends Component {
 
   render() {
     const {
-      first_name, sport, profile_pic, people, details, location, id, isToggled, id_posts} = this.state;
+      first_name,
+      sport,
+      profile_pic,
+      people,
+      details,
+      location,
+      id,
+      isToggled,
+      id_posts,
+    } = this.state;
 
     return (
       <div className="post_box">
@@ -81,7 +136,9 @@ class View extends Component {
           !isToggled ? (
             <div>
               <p>{sport}</p>
-              <p>{people}</p>
+              <p>
+                {people}
+              </p>
               <p>{details}</p>
               <p>{location}</p>
 
@@ -130,7 +187,7 @@ class View extends Component {
               </div>
 
               <div>
-                <button onClick={()=>this.editPost(id_posts)}>Save</button>
+                <button onClick={() => this.editPost(id_posts)}>Save</button>
                 <button onClick={(this.toggleFn, this.componentDidMount)}>
                   Cancel
                 </button>{" "}
@@ -140,10 +197,16 @@ class View extends Component {
         ) : (
           <div>
             <p>{sport}</p>
-            <p>{people}</p>
+            <p>
+              {people}
+            </p>
             <p>{details}</p>
             <p>{location}</p>
-            <button>I'm Going!</button>
+            {this.state.going ? (
+              <button onClick={this.goingFn}>Actually I can't</button>
+            ) : (
+              <button onClick={this.goingFn}>I'm Going!</button>
+            )}
           </div>
         )}
       </div>
