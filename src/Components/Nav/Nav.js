@@ -17,20 +17,20 @@ function Nav (props){
     }
     
     return(
-        <div className = 'header'>
+        <div className = 'header-nav'>
             <h1>Welcome: {`${props.first_name}`}</h1>
-            <Link to = '/Profile'>
-                <button>Profile</button>
+            <Link to = '/profile'>
+                <h2 className = "nav-links">Profile</h2>
                 </Link>
             <Link to = '/dashboard'>
-                <button>Dashboard</button>
+               <h2 className = "nav-links">Home</h2>
                 </Link>
-            <Link to = '/Event'>
-                <button>New Post</button>
+            <Link to = '/event'>
+                <h2 className = "nav-links">New Post</h2>
                 </Link>
 
             <Link to = '/'>
-                <button onClick = {logoutUser}>Logout</button>
+                <h2 onClick = {logoutUser} className = "nav-links">Logout</h2> 
             </Link>
         </div>  
 

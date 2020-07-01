@@ -19,6 +19,28 @@ class Dashboard extends Component{
     }
 
     componentDidMount(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(getPosition);
+          }
+          function getPosition(position) {
+            console.log(position.coords.latitude, position.coords.longitude);
+          }
+          navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+          });
+          navigator.geolocation.getCurrentPosition(function(position) {
+            console.log(position)
+          });
+          navigator.geolocation.getCurrentPosition(
+            function(position) {
+              console.log(position);
+            },
+            function(error) {
+              console.error("Error Code = " + error.code + " - " + error.message);
+            }
+          );
+        
         this.getPosts()
     }
 

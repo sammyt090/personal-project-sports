@@ -21,12 +21,14 @@ app.use(session ({
 app.post('/auth/register', ctr1.registerUser)
 app.post('/auth/login', ctr1.loginUser)
 app.delete('/auth/logout', ctr1.logoutUser)
+app.get('/auth/getUser', ctr1.getUser)
 
 
 app.get('/dashboard/posts', ctr2.getPosts)
 app.post('/event/posts', ctr2.createPost)
 app.get('/dashboard/post/:id', ctr2.getPost)
 app.delete('/dashboard/post/:id', ctr2.deletePost)
+
 app.put('/dashboard/post/:id', ctr2.editPost)
 app.put('/dashboard/people/:postId', ctr2.addPeople)
 app.put('/dashboard/remove/:id', ctr2.deletePeople)

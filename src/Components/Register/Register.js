@@ -4,6 +4,7 @@ import './Register.css'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/reducer'
 import {Link} from 'react-router-dom'
+import img from '../PersonalProjectSports/logo.png'
 
 class Register extends Component{
     constructor(){
@@ -56,6 +57,10 @@ class Register extends Component{
         const {first_name, last_name, username, password} = this.state
         return(
             <div className= 'main'>
+                <div className= 'header-box'>
+                    <img src= {img} alt='logo' className = 'img1'/>
+                   
+                </div>
                 <div className = "box">
                     <h1>Get Started!</h1>
                 <div className = "register">
@@ -76,7 +81,7 @@ class Register extends Component{
                 </div>
 
                 <button onClick={this.registerUser}>Register</button>
-                <Link to = '/'><p>Cancel</p></Link>
+                <Link to = '/' className = 'link1'><p>Cancel</p></Link>
                 </div>
 
             </div>

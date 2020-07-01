@@ -30,6 +30,7 @@ class View extends Component {
           // going,
           details,
           location,
+          id,
           id_posts,
           attendees
         } = res.data[0];
@@ -43,6 +44,7 @@ class View extends Component {
           sport: sport,
           people: people,
           going: going,
+          id: id,
           details: details,
           location: location,
           id_posts: id_posts,

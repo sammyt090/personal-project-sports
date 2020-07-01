@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import DatePicker from 'react-date-picker';
 import axios from 'axios';
-// import Dropdown from 'react-bootstrap/Dropdown'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import './Event.css'
+// import Time from '../Time/Time'
 // import {getUser} from '../../redux/reducer'
 
 
@@ -20,10 +20,15 @@ class Event extends Component{
             people: null,
             posts_id: null,
             user_activity_id:null,
-            date: new Date()
+            date: '0000-00-00',
+            postPhoto: '',
+            time: '',
+            hour: '00:00:00',
         }
 
         this.createPost= this.createPost.bind(this)
+        // this.onChange= this.onChange.bind(this)
+        // this.selectTime=this.selectTime.bind(this)
     }
 
     componentDidMount (){
@@ -36,7 +41,12 @@ class Event extends Component{
             user_activity_id: this.props.id
         })
     }
-
+    // onChange(date){
+    //     this.setState({
+    //         date
+    //     })
+    //     console.log(date)
+    // }
     onChange = date => this.setState({ date })
 
     handleChange= event => this.setState({[event.target.name]:event.target.value})
@@ -53,49 +63,46 @@ class Event extends Component{
             details:'',
             people: '',
             posts_id: null,
-            date: new Date()
+            date: new Date(),
+            postPhot: ''
             })
         })
     }
+   
 
 render(){
-    // console.log(DatePicker)
+  
     return(
-        <div>Event
-            <DatePicker
-          onChange={this.onChange}
-          value={this.state.date}
-        />
-            <div>
-                <p>Sport:</p>
-                <input className= 'Sport' name='sport' value={this.state.sport} onChange={(event)=> this.handleChange(event)}></input>
-            </div>
-            {/* <Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-    Dropdown Button
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown> */}
-            <div>
+        <div className = 'background'>
+        <div className = 'main-event'>
+            <h2>New Event/Activity</h2>
+            <div>Date:
+           
+        <input type = 'date' className = 'date' name = 'date' value={this.state.date} onChange={(event)=> this.handleChange(event)}></input>
+        <input type ='time' className= 'hour' name = 'hour' value={this.state.hour} onChange={(event)=> this.handleChange(event)}></input>
+        </div>
+        
+            <div className = 'choice'>
                 <p>Location:</p>
                 <input className= 'location' name='location' value={this.state.location} onChange={(event)=> this.handleChange(event)}></input>
             </div>
-            <div>
+            <div className = 'choice'>
                 <p>Details:</p>
                 <input className= 'details' name='details' value={this.state.details} onChange={(event)=> this.handleChange(event)}></input>
             </div>
-            <div>
+            <div className = 'choice'>
                 <p>Max People limit:</p>
                 <input className= 'people' name='people' value={this.state.people} onChange={(event)=> this.handleChange(event)}></input>
             </div>
+            <div className = 'choice'>
+                <p>Photo</p>
+                <input className= 'post-photo' name='postPhoto' value={this.state.postPhoto} onChange={(event)=> this.handleChange(event)}></input>
+            </div>
+            
 
             <button onClick={this.createPost}>Add Post</button>
             
+        </div>
         </div>
 
     )

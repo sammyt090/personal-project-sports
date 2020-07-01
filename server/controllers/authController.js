@@ -1,5 +1,6 @@
 const {emailChecker} = require('../util')
 const bcrypt = require('bcrypt')
+const {sendEmail} = require('./emailAuth')
 module.exports = {
     registerUser: async (req, res) => {
         const {username, password, first_name, last_name, profile_pic} = req.body
@@ -18,6 +19,10 @@ module.exports = {
         delete registeredUser[0].password
         req.session.user = {username: registeredUser[0].username, id: registeredUser[0].id, first_name: registeredUser[0].first_name,
         last_name: registeredUser[0].last_name, profile_pic: 'https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg'}
+
+        sendEmail(req)
+        // req.session.user = newUserObj 
+      
         res.status(200).send(req.session.user)
         
 
@@ -48,5 +53,9 @@ module.exports = {
     logoutUser: async (req, res) => {
         req.session.destroy();
         res.sendStatus(200);
-    }
+    },
+
+getUser: async (req, res) => {
+    
+}
 }

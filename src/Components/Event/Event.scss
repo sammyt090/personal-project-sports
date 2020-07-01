@@ -1,0 +1,30 @@
+@mixin flexCenter($position){
+    display: flex;
+    color: rgb(28, 144, 165);
+    align-items: center;
+    position: $position;
+    font-size: 30px;
+    
+}
+
+
+.main-event{
+    @include flexCenter(absolute);
+    width: 60vw;
+    height: 50vh;
+     border: 1px solid black;
+    margin-top: 5vh;
+    flex-direction: column;
+   
+}
+.background{
+    @include flexCenter(relative);
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+.choice{
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+}

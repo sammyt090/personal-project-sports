@@ -1,0 +1,62 @@
+@mixin flexCenter($position){
+    display: flex;
+    color: rgb(28, 144, 165);
+    align-items: center;
+    position: $position
+}
+
+.img1{
+    left: 0;
+    
+    width: 400px;
+    height: 100px;
+}
+.link1{
+    color: black;
+}
+
+.header-box{
+    
+    top: 0px;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 50;
+    box-shadow: 10px 10px 8px rgb(243, 44, 44);
+    
+}
+
+.main{
+   @include flexCenter(relative);
+    background-image: url("../PersonalProjectSports/vbimg.jpg");
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+
+    /* ba */
+
+}
+
+.box{
+    @include flexCenter(absolute);
+    justify-content: center;
+    content: '';
+    background-color: white;
+    width: 500px;
+    height: 50vh;
+    opacity: .8;
+    flex-direction: column;
+    z-index: 40;
+    box-sizing: border-box;
+    border-radius: 25px;
+    box-shadow: 10px 10px 8px black;
+
+}
+

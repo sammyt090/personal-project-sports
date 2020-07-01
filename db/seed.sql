@@ -19,6 +19,8 @@ create table posts (
     location varChar(100),
     details varChar(500),
     people integer,
+    date text,
+    postPhoto text,
     posts_id integer references users(id)
 
 );

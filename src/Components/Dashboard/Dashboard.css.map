@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,UAAU,EAAE,EAAE;EACd,OAAO,EAAE,IAAI;EACb,QAAQ,EAAE,QAAQ;EAClB,8BAA8B;EAC9B,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;CAEtB",
+    "sources": [
+        "Dashboard.scss"
+    ],
+    "names": [],
+    "file": "Dashboard.css"
+}

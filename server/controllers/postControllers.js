@@ -14,7 +14,9 @@ module.exports = {
       details,
       people,
       going,
-      posts_id,
+      postPhoto,
+      date,
+      posts_id
     } = req.body;
     const db = req.app.get("db");
     db.create_post([
@@ -23,6 +25,8 @@ module.exports = {
       details,
       people,
       posts_id,
+      date,
+      postPhoto,
       going,
     ])
       .then(() => res.sendStatus(200))
@@ -106,7 +110,8 @@ module.exports = {
       const { id } = req.params;
       const db = req.app.get("db");
   
-      const [updatedPost] = await db.add_people([id]).then(()=>{
+      const [updatedPost] = await 
+      db.add_people([id]).then(()=>{
         if (updatedPost) {
           return res.sendStatus(200)
       }})
