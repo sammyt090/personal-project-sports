@@ -1,11 +1,13 @@
 require('dotenv').config()
 const express = require ('express')
 const app = express()
+app.use(express.static(`${__dirname}/../build`))
 const massive = require ('massive')
 const session = require ('express-session')
 const ctr1 = require('./controllers/authController')
 const ctr2 = require('./controllers/postControllers')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
+
 
 app.use(express.json())
 
@@ -16,6 +18,8 @@ app.use(session ({
     maxAge: 24 * 60 * 60 * 1000
 
 }))
+
+
 
 
 app.post('/auth/register', ctr1.registerUser)
