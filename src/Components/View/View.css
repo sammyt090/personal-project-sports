@@ -1,0 +1,37 @@
+.post_box {
+  margin-top: 20%;
+}
+
+.save-change {
+  width: 25%;
+  height: 80px;
+  background-color: #1c90a5;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  font-size: 30px;
+  color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  bottom: 100px;
+  right: 10px;
+}
+
+.view-view {
+  margin-left: 300px;
+}
+
+.button111 {
+  background-color: #1c90a5;
+  font-size: 30px;
+  color: white;
+  width: 40%;
+  height: 80px;
+}
+/*# sourceMappingURL=View.css.map */

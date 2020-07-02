@@ -18,10 +18,20 @@ class Profile extends Component{
 
 render(){
     return(
-        <div>
+        <div className = 'main-profile'>
+            <div className = 'profile-info'>
             <img  src={this.props.profile_pic} alt="profile" className = 'profile-img'/>
+            <div className = 'text-profile'>
+                <div>
     <h3>Name:</h3><p>{this.props.first_name} {this.props.last_name}</p>
+    </div>
+    <div>
     <h3>Username:</h3><p>{this.props.username}</p>
+    </div>
+    </div>
+    <button className = 'edit-profile-button'>Edit Profile</button>
+            </div>
+            
         </div>
     )
 }

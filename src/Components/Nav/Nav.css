@@ -12,10 +12,24 @@
   top: 0px;
   -ms-flex-line-pack: center;
       align-content: center;
+  z-index: 1000;
+}
+
+.header-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  z-index: 1000;
+  width: 85%;
+  height: 10vh;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  right: 0px;
 }
 
 .nav-links {
@@ -24,5 +38,15 @@
   -webkit-text-decoration: underline #1c90a5;
           text-decoration: underline #1c90a5;
   z-index: 1001;
+}
+
+.img2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20%;
+  position: relative;
+  top: 0px;
+  left: 0px;
 }
 /*# sourceMappingURL=Nav.css.map */

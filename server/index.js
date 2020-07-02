@@ -35,7 +35,7 @@ app.delete('/dashboard/post/:id', ctr2.deletePost)
 
 app.put('/dashboard/post/:id', ctr2.editPost)
 app.put('/dashboard/people/:postId', ctr2.addPeople)
-app.put('/dashboard/remove/:id', ctr2.deletePeople)
+app.put('/dashboard/remove/:activity_id', ctr2.deletePeople)
 
 
 

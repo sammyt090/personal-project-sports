@@ -9,8 +9,17 @@
     position: fixed;
     top: 0px;
     align-content: center;
-    justify-content: space-evenly;
+   
     z-index: 1000;
+}
+.header-links{
+    display: flex;
+    position: absolute;
+    justify-content: space-evenly;
+    width: 85%;
+    height: 10vh;
+    flex-direction: row;
+    right: 0px;
 }
 
 .nav-links{
@@ -18,5 +27,13 @@
     color: rgb(28, 144, 165);
     text-decoration: underline rgb(28, 144, 165);
     z-index: 1001;
+
+}
+.img2{
+    display: flex;
+    width: 20%;
+    position: relative;
+    top: 0px;
+    left: 0px;
 
 }

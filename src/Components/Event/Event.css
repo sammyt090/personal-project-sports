@@ -1,3 +1,8 @@
+.post-photo {
+  width: 30%;
+  height: 45px;
+}
+
 .main-event {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8,14 +13,18 @@
           align-items: center;
   position: absolute;
   font-size: 30px;
-  width: 60vw;
-  height: 50vh;
+  width: 80vw;
+  height: xx;
   border: 1px solid black;
   margin-top: 5vh;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 20px;
+  background-color: white;
+  -webkit-box-shadow: 10px 10px 5px black;
+          box-shadow: 10px 10px 5px black;
 }
 
 .background {
@@ -33,6 +42,8 @@
           justify-content: center;
   width: 100vw;
   height: 100vh;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#cfd9df), to(#e2ebf0));
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 
 .choice {
@@ -44,5 +55,64 @@
       -ms-flex-direction: row;
           flex-direction: row;
   margin: 15px;
+}
+
+.inputs {
+  width: 80vw;
+  height: xx;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.add-button {
+  width: 25%;
+  height: 80px;
+  background-color: #1c90a5;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  font-size: 30px;
+  color: white;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  bottom: 10px;
+  right: 10px;
+}
+
+.people {
+  width: 50px;
+}
+
+.basic {
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+.details {
+  width: 50%;
+  height: 200px;
+}
+
+.event-photo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 90px;
+  right: 20px;
+  width: 40%;
+  height: 30vh;
 }
 /*# sourceMappingURL=Event.css.map */

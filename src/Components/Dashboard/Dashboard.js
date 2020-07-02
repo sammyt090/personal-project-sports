@@ -59,9 +59,9 @@ render(){
 
     return(
         <div className = 'dashboard'>
-        <p> Dashboard:</p>
-
+      <div className = 'post_box_content'>
        {mapPosts}
+       </div>
         </div>
     )
 }

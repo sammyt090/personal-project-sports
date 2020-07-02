@@ -1,18 +1,64 @@
 
-
-.post_box{
-    width: 50vw;
-    height: 30vh;
+*{
+    text-decoration: none;
+}
+.post_box_main{
+    width: 70vw;
+    height: xx;
     background-color: white;
-    border-bottom: 1px solid black;
-    border-radius: 5px;
-    justify-self: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    // justify-content: start;
     right: 0px;
     margin-bottom: 20px;
+    font-size: 20px;
+    color: black;
+}
+.sport-title{
+    display: flex;
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    justify-content: space-evenly;
 }
 
 .profile-pic{
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    flex-direction: column;
+}
+.name-post{
+    display: flex;
+    position: absolute;
+    left: 100px;
+    top: 25px;
+}
+h3{
+ margin-left: 20px;
+}
+.user-info{
+    display: flex;
+    position: relative;
+    height: 110px;
+    width: 70vw;
+    background-color: rgb(253, 120, 142);
+    flex-direction: row;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: left;
+}
+.post-photo1{
+    width: 500px;
+    height: 300px;
 }

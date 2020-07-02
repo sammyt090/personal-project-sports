@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import './Nav.css'
 import axios from 'axios'
 import {logoutUser} from '../../redux/reducer'
+import img from '../PersonalProjectSports/logocolor.png'
 
 
 function Nav (props){
@@ -18,6 +19,8 @@ function Nav (props){
     
     return(
         <div className = 'header-nav'>
+            <img src= {img} alt='logo' className = 'img2'/>
+            <div className= 'header-links'>
             <h1>Welcome: {`${props.first_name}`}</h1>
             <Link to = '/profile'>
                 <h2 className = "nav-links">Profile</h2>
@@ -33,6 +36,7 @@ function Nav (props){
                 <h2 onClick = {logoutUser} className = "nav-links">Logout</h2> 
             </Link>
         </div>  
+        </div>
 
     )
 }

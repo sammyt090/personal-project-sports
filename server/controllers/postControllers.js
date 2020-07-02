@@ -13,10 +13,11 @@ module.exports = {
       location,
       details,
       people,
-      going,
-      postPhoto,
       date,
-      posts_id
+      hour,
+      postPhoto,
+      posts_id,
+      going
     } = req.body;
     const db = req.app.get("db");
     db.create_post([
@@ -24,9 +25,10 @@ module.exports = {
       location,
       details,
       people,
-      posts_id,
       date,
+      hour,
       postPhoto,
+      posts_id,
       going,
     ])
       .then(() => res.sendStatus(200))
@@ -107,16 +109,16 @@ module.exports = {
   },
 
   deletePeople: async (req, res) => {
-      const { id } = req.params;
+      const { activity_id } = req.params;
+      const {id} = req.body;
       const db = req.app.get("db");
-  
-      const [updatedPost] = await 
-      db.add_people([id]).then(()=>{
-        if (updatedPost) {
+    console.log(req.body, activity_id, id);
+    
+      db.delete_people([activity_id, id]).then(()=>{
           return res.sendStatus(200)
-      }})
-      .catch  
+      })
+      .catch (()=>res.status(500).send("Error encountered"))
       
-      res.status(500).send("Error encountered");
+      
   
   }}

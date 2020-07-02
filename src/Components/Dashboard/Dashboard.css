@@ -1,5 +1,5 @@
 .dashboard {
-  margin-top: 5%;
+  margin-top: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,5 +12,11 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#cfd9df), to(#e2ebf0));
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+.post_box_content {
+  margin-top: 50px;
 }
 /*# sourceMappingURL=Dashboard.css.map */

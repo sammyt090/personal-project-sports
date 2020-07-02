@@ -20,6 +20,7 @@ create table posts (
     details varChar(500),
     people integer,
     date text,
+    hour text,
     postPhoto text,
     posts_id integer references users(id)
 

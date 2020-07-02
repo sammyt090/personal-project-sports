@@ -4,7 +4,7 @@ import axios from 'axios'
 import {getUser} from '../../redux/reducer'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import img from '../PersonalProjectSports/logo.png'
+import img from '../PersonalProjectSports/logocolor.png'
 
 class Auth extends Component{
     constructor(){

@@ -4,7 +4,7 @@ import './Register.css'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/reducer'
 import {Link} from 'react-router-dom'
-import img from '../PersonalProjectSports/logo.png'
+import img from '../PersonalProjectSports/logocolor.png'
 
 class Register extends Component{
     constructor(){
