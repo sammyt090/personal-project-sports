@@ -17,7 +17,7 @@ function Post(props) {
     location,
     id_posts,
   } = props.e;
-  console.log(props);
+  // console.log(props);
 
   return (
     <Link to={`/view/${id_posts}`}>

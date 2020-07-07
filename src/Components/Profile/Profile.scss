@@ -6,7 +6,7 @@
 }
 .main-profile{
     margin-top: 10vh;
-    width: 100vw;
+    width: 100%;
     height: 90vh;
     padding-top: 100px;
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
@@ -18,7 +18,7 @@
   
 }
 .edit-profile-button{
-    margin-left: 60px;
+    // margin-left: 60px;
     height: 50px;
     width: 200px;
     background-color: rgb(28, 144, 165);
@@ -31,4 +31,46 @@
     font-size: 30px;
     margin-top: 150px;
     margin-left: 50px;
+}
+
+@media(max-width: 900px) {
+    .profile-img{
+        width: 200px;
+        height: 200px;
+    }
+    .text-profile{
+        font-size: 20px;
+        margin-top: 150px;
+        margin-left: 50px;
+    }
+    .edit-profile-button{
+        // margin-left: 60px;
+        height: 30px;
+        width: 150px;
+        background-color: rgb(28, 144, 165);
+        border-radius: 5px;
+        font-size: 20px;
+        color: white;
+    }
+}
+
+@media(max-width: 515px){
+    .profile-img{
+        width: 100px;
+        height: 100px;
+    }
+    .text-profile{
+        font-size: 18px;
+        margin-top: 130px;
+        margin-left: 30px;
+    }
+    .edit-profile-button{
+        // margin-left: 60px;
+        height: 20px;
+        width: 100px;
+        background-color: rgb(28, 144, 165);
+        border-radius: 5px;
+        font-size: 15px;
+        color: white;
+    }
 }

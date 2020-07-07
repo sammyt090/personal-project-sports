@@ -1,18 +1,24 @@
-import React, { useEffect, useState} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import Post from '../Post/Post'
 import './Dashboard.css'
 
 
 
-function Dashboard (props){
-   
-    const [posts, setPosts] = useState([])
-        
-       
-       
+class Dashboard extends Component{
+    constructor(){
+        super()
 
-    useEffect(() => {
+        this.state={
+            posts: [],
+            
+        }
+        // this.componentDidMount = this.componentDidMount.bind(this)
+        this.getPosts = this.getPosts.bind(this)
+
+    }
+
+    componentDidMount(){
         // if (navigator.geolocation) {
         //     navigator.geolocation.getCurrentPosition(getPosition);
         //   }
@@ -35,19 +41,21 @@ function Dashboard (props){
         //     }
         //   );
         
-        getPosts()
-    })
+        this.getPosts()
+    }
 
-    const getPosts = () => {
+    getPosts(){
         axios.get('/dashboard/posts').then((res) => {
             // console.log(res)
-            setPosts(res.data)
+            this.setState({
+                posts: res.data
+            })
         })
     }
 
 
-
-    let mapPosts = posts.map(e =>  <div  key={e.id_posts}> <Post e= {e} posts ={posts}/></div>)
+render(){
+    let mapPosts = this.state.posts.map(e =>  <div  key={e.id_posts}> <Post e= {e} posts ={this.state.posts}/></div>)
 
     return(
         <div className = 'dashboard'>
@@ -57,6 +65,6 @@ function Dashboard (props){
         </div>
     )
 }
-
+}
 
 export default Dashboard

@@ -1,41 +1,60 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import {connect} from 'react-redux'
 import './Profile.css'
+import { editProfile } from '../../redux/reducer'
+import axios from 'axios'
 
 
 
-class Profile extends Component{
-    constructor(){
-        super()
+function Profile (props){
+    const [newProfile, setNewProfile] = useState(props.profile_pic)
+    const [favorites, setFavorites] = useState('')
+    const [isToggled, setIsToggled] = useState(false)
 
+    
 
-        this.state={
-            favorites: []
+    useEffect(()=> {
+        setIsToggled(false)
+    })
+    const toggleFn = () => ( setIsToggled(!isToggled) )
+    const handleChange = event =>setNewProfile(event.target.value) 
+
+    const handleClick = () =>{
+        const body = {newProfile}
+        axios.put(`/profile/picture/${props.id}`, body).then(res => {
+            
+        })
+        props.editProfile(newProfile)
         }
-    }
-
-
-
-render(){
+    // const handleChange = event => 
     return(
         <div className = 'main-profile'>
             <div className = 'profile-info'>
-            <img  src={this.props.profile_pic} alt="profile" className = 'profile-img'/>
+            <img  src={props.profile_pic} alt="profile" className = 'profile-img'/>
+            
             <div className = 'text-profile'>
                 <div>
-    <h3>Name:</h3><p>{this.props.first_name} {this.props.last_name}</p>
+    <h3>Name:</h3><p>{props.first_name} {props.last_name}</p>
     </div>
     <div>
-    <h3>Username:</h3><p>{this.props.username}</p>
+    <h3>Username:</h3><p>{props.username}</p>
     </div>
     </div>
-    <button className = 'edit-profile-button'>Edit Profile</button>
+    <button className = 'edit-profile-button' onClick = {toggleFn} >Edit Profile</button>
             </div>
-            
+
+    {/* {isToggled ? ( */}
+       <p>New Profile Picture:</p> <input value ={newProfile} className='newPicture' name = "New Profile" onChange ={(event) => handleChange(event)}/>
+            {/* ):null} */}
+            <button onClick ={handleClick}>Save</button>
         </div>
     )
 }
-}
+
+
+
 
 const mapStateToProps = redux => redux
-export default connect(mapStateToProps)(Profile)
+const mapDispatchToProps = {editProfile}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

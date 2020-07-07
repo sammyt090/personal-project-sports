@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import DatePicker from "react-date-picker";
 import axios from "axios";
@@ -6,51 +6,59 @@ import "./Event.css";
 // import Time from '../Time/Time'
 // import {getUser} from '../../redux/reducer'
 
-function Event (props) {
-  
-    
-     const [sport, setSport] = useState("")
-     const [location, setLocation] = useState("")
-     const [details, setDetails] = useState("")
-     const [people, setPeople] = useState(null)
-     const [posts_id, setPosts_id] = useState(null)
-     const [user_activity_id, setUser_activity_id] = useState(null)
-     const [date, setDate] = useState("0000-00-00")
-     const [postPhoto, setPostPhoto] = useState('https://www.sportswearable.net/wp-content/uploads/2019/03/sports-New-Brunswick.jpg')
-     const [hour, setHour] = useState("00:00:00")
-    
+class Event extends Component {
+  constructor() {
+    super();
 
+    this.state = {
+      sport: "",
+      location: "",
+      details: "",
+      people: null,
+      posts_id: null,
+      user_activity_id: null,
+      date: "0000-00-00",
+      postPhoto: "https://www.sportswearable.net/wp-content/uploads/2019/03/sports-New-Brunswick.jpg",
+      hour: "00:00:00",
+    };
+
+    this.createPost = this.createPost.bind(this);
     // this.onChange= this.onChange.bind(this)
     // this.selectTime=this.selectTime.bind(this)
-  
+  }
 
-  useEffect(()=> {
-    // console.log(this.props);
-    // console.log(this.state);
-    setPosts_id(props.id)
-    setUser_activity_id(props.id) 
-    
-  })
+  componentDidMount() {
+    console.log(this.props);
+    console.log(this.state);
+
+    this.setState({
+      posts_id: this.props.id,
+      user_activity_id: this.props.id,
+    });
+  }
   // onChange(date){
   //     this.setState({
   //         date
   //     })
   //     console.log(date)
   // }
-//   onChange = (date) => this.setState({ date });
+  onChange = (date) => this.setState({ date });
 
-const handleChanges = event =>setSport(event.target.value) 
-const handleChanged = event =>setDate(event.target.value) 
-const handleChanget = event =>setHour(event.target.value) 
-const handleChangel = event =>setLocation(event.target.value) 
-const handleChangef = event =>setPostPhoto(event.target.value) 
-const handleChangede = event =>setDetails(event.target.value) 
-const handleChangep = event =>setPeople(event.target.value) 
+  handleChange = (event) =>
+    this.setState({ [event.target.name]: event.target.value });
 
-  
-
-  const createPost = () => {
-    
+  createPost() {
+    const {
+      sport,
+      location,
+      details,
+      people,
+      going,
+      date,
+      postPhoto,
+      hour,
+      posts_id,
+    } = this.state;
     const body = {
       sport,
       location,
@@ -60,15 +68,24 @@ const handleChangep = event =>setPeople(event.target.value)
       hour,
       postPhoto,
       posts_id,
-      
+      going,
     };
     axios.post("/event/posts", body).then((res) => {
-      props.history.push("dashboard");
-      
+      this.props.history.push("dashboard");
+      this.setState({
+        sport: "",
+        location: "",
+        details: "",
+        people: "",
+        posts_id: null,
+        date: "0000-00-00",
+        hour: "00:00:00",
+        postPhot: "",
+      });
     });
   }
 
-  
+  render() {
     return (
       <div className="background">
         <div className="main-event">
@@ -80,12 +97,12 @@ const handleChangep = event =>setPeople(event.target.value)
               <input
                 className="Sport basic"
                 name="sport"
-                value={sport}
-                onChange={(event) => handleChanges(event)}
+                value={this.state.sport}
+                onChange={(event) => this.handleChange(event)}
               ></input>
             </div>
 
-            <img src={postPhoto} className="event-photo" />
+            <img src={this.state.postPhoto} className="event-photo" />
 
             <div className="choice">
               <p>Date:</p>
@@ -93,15 +110,15 @@ const handleChangep = event =>setPeople(event.target.value)
                 type="date"
                 className="date basic"
                 name="date"
-                value={date}
-                onChange={(event) => handleChanged(event)}
+                value={this.state.date}
+                onChange={(event) => this.handleChange(event)}
               ></input>
               <input
                 type="time"
                 className="hour basic"
                 name="hour"
-                value={hour}
-                onChange={(event) => handleChanget(event)}
+                value={this.state.hour}
+                onChange={(event) => this.handleChange(event)}
               ></input>
             </div>
 
@@ -110,8 +127,8 @@ const handleChangep = event =>setPeople(event.target.value)
               <input
                 className="location basic"
                 name="location"
-                value={location}
-                onChange={(event) => handleChangel(event)}
+                value={this.state.location}
+                onChange={(event) => this.handleChange(event)}
               ></input>
             </div>
 
@@ -120,8 +137,8 @@ const handleChangep = event =>setPeople(event.target.value)
               <input
                 className="people basic"
                 name="people"
-                value={people}
-                onChange={(event) => handleChangep(event)}
+                value={this.state.people}
+                onChange={(event) => this.handleChange(event)}
               ></input>
             </div>
             <div className="choice">
@@ -129,8 +146,8 @@ const handleChangep = event =>setPeople(event.target.value)
               <input
                 className="post-photo basic"
                 name="postPhoto"
-                value={postPhoto}
-                onChange={(event) => handleChangef(event)}
+                value={this.state.postPhoto}
+                onChange={(event) => this.handleChange(event)}
               ></input>
             </div>
             <div className="choice">
@@ -138,12 +155,12 @@ const handleChangep = event =>setPeople(event.target.value)
               <textarea
                 className="details basic"
                 name="details"
-                value={details}
-                onChange={(event) => handleChangede(event)}
+                value={this.state.details}
+                onChange={(event) => this.handleChange(event)}
               ></textarea>
             </div>
 
-            <button onClick={createPost} className="add-button">
+            <button onClick={this.createPost} className="add-button">
               Add Post
             </button>
           </div>
@@ -151,7 +168,7 @@ const handleChangep = event =>setPeople(event.target.value)
       </div>
     );
   }
-
+}
 
 const mapStateToProps = (reduxState) => reduxState;
 export default connect(mapStateToProps)(Event);

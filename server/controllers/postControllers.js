@@ -17,7 +17,7 @@ module.exports = {
       hour,
       postPhoto,
       posts_id,
-      going
+      
     } = req.body;
     const db = req.app.get("db");
     db.create_post([
@@ -29,7 +29,7 @@ module.exports = {
       hour,
       postPhoto,
       posts_id,
-      going,
+      
     ])
       .then(() => res.sendStatus(200))
       .catch((err) => {

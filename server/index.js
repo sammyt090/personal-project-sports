@@ -6,6 +6,7 @@ const massive = require ('massive')
 const session = require ('express-session')
 const ctr1 = require('./controllers/authController')
 const ctr2 = require('./controllers/postControllers')
+const ctr3 = require('./controllers/profileController')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
 
@@ -38,7 +39,7 @@ app.put('/dashboard/people/:postId', ctr2.addPeople)
 app.put('/dashboard/remove/:activity_id', ctr2.deletePeople)
 
 
-
+app.put('/profile/picture/:id', ctr3.editProfile)
 
 
 

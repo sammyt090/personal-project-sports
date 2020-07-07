@@ -5,7 +5,7 @@
 .save-change{
     width: 25%;
     height: 80px;
-    background-color: rgb(28, 144, 165);
+    background-color: $mainColor;
     border-radius: 10px;
     display: flex;
     position: absolute;
@@ -19,14 +19,13 @@
 
 .view-view{
     margin-left: 300px;
-    
+    button{
+        background-color: $mainColor;
+        font-size: 30px;
+        color: white;
+        width: 40%;
+        height: 80px;
+    }
     
 }
 
-.button111{
-    background-color: rgb(28, 144, 165);
-    font-size: 30px;
-    color: white;
-    width: 40%;
-    height: 80px;
-}

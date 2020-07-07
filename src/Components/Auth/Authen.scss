@@ -1,6 +1,6 @@
 @mixin flexCenter($position){
     display: flex;
-    color: rgb(28, 144, 165);
+    color: $mainColor;
     align-items: center;
     position: $position
 }
