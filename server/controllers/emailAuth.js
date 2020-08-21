@@ -29,7 +29,7 @@ const sendEmail = (req, res) => {
                             <td align="center" bgcolor="#ffffff" style="padding: 0px 0 0px 0; color: #cccccc; font-size: 28px; font-weight: bold; font-family: Arial, sans-serif;">
                                 <a href="http://localhost:3000/#/" style="color: #ffffff;">
                                 <img src='https://wakefield.apsva.us/wp-content/uploads/sites/37/2019/07/sport-1.jpg'
-                                 alt="Plants in pots" width="600" height="200" />
+                                 alt="Sports Connect" width="600" height="200" />
                                 </a>
                             </td>
                         </tr>
